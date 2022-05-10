@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music player</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <div class="music-player">
+        <div class="dashboard">
+            <div class="header">
+                <div class="dark-mode-btn">
+                    <img src="./assets/img/darkmode.png" alt="">
+                </div>
+                <h4>Now playing:</h4>
+                <h2>Song name</h2>
+                <div class="add-btn">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+            </div>
+            <div class="music-thumbnail">
+                <div class="thumbnail" style="background-image: url('https://i.ytimg.com/vi/jTLhQf5KJSc/maxresdefault.jpg')"></div>
+            </div>
+            <div class="control-btns">
+                <div class="btn repeat-btn">
+                    <i class="fa-solid fa-rotate-right"></i>
+                </div>
+                <div class="btn prev-btn">
+                    <i class="fa-solid fa-backward-step"></i>
+                </div>
+                <div class="btn play-btn">
+                    <i class="fa-solid fa-circle-pause pause-icon"></i>
+                    <i class="fa-solid fa-circle-play play-icon"></i>
+                </div>
+                <div class="btn next-btn">
+                    <i class="fa-solid fa-forward-step"></i>
+                </div>
+                <div class="btn random-btn">
+                    <i class="fa-solid fa-shuffle"></i>
+                </div>
+            </div>
+            <div class="volume">
+                <div class="volume-btn">
+                    <i class="fas fa-volume-up volume-enable"></i>
+                    <i class="fas fa-volume-mute volume-disable"></i>
+                </div>
+                <input id="volume-range" type="range" value="100" step="1" min="0" max="100">
+            </div>
+            <div class="progress-bar">
+                <p id="start-time">00:00</p>
+                <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
+                <p id="end-time">00:00</p>
+            </div>
+            <audio id="audio" src="" preload="metadata"></audio>
+        </div>
+        <div class="play-list">
+            <!-- Songs go here -->
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>
