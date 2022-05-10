@@ -67,15 +67,22 @@ body.dark-mode .dashboard {
 }
 
 .dark-mode-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     color: var(--primary-color);
-    left: 15px;
-    font-size: 22px;
+    left: 10px;
     top: 0;
     height: 34px;
     width: 36px;
     border: 2px solid;
     border-radius: 50%;
+}
+
+.dark-mode-btn img {
+    width: 20px;
+    height: 20px;
 }
 
 .add-btn {
