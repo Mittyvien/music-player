@@ -152,7 +152,8 @@ body.dark-mode .control-btns .btn:not(:nth-child(3)) {
 }
 
 .volume-btn,.dark-mode-btn,#volume-range,
-.control-btns .btn:hover {
+.control-btns .btn:hover,#download-song-btn,
+.download-modal .overlay {
     cursor: pointer;
 }
 
@@ -316,8 +317,13 @@ body.dark-mode .detail .author {
 }
 
 .song .option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 35px;
+    width: 35px;
     position: absolute;
-    right: 20px;
+    right: 10px;
     color: var(--black-color);
 }
 
@@ -344,3 +350,43 @@ body.dark-mode .song .option {
 .song.active .option {
     color: var(--white-color) !important;
 }
+
+.download-modal .overlay {
+    display: none;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.3);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    overflow: auto;
+    max-width: 480px;
+}
+
+.download-modal .overlay.active {
+    display: block;
+}
+
+#download-song-btn {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 480px;
+    height: 40px;
+    background-color: var(--white-color);
+    color: var(--primary-color);
+    border: none;
+    font-size: 17px;
+    transform: translateY(50px);
+    transition: all 0.3s ease;
+    z-index: 1;
+}
+
+#download-song-btn:hover {
+    background-color: #dedede;
+}
+
+
