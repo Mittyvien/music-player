@@ -17,6 +17,8 @@ const endTime = document.getElementById("end-time");
 const volumeBtn = document.querySelector(".volume .volume-btn");
 const darkModeBtn = document.querySelector(".dark-mode-btn");
 const darkModeIcon = darkModeBtn.querySelector("img");
+const downloadModalOverlay = document.querySelector(".download-modal .overlay");
+const downloadModalBtn = document.getElementById("download-song-btn");
 
 const MUSIC_PLAYER_KEY = "music-player";
 
@@ -116,8 +118,7 @@ const app = {
     },
     renderSong: function() {
         const htmls = this.songs.map(function(song, index) {
-            const isActiveSong = index === app.currSongIndex ? " active" : "";
-            return `<div class="song${isActiveSong}" index="${index}">
+            return `<div class="song" index="${index}">
             <div class="thumbnail" style="background-image: url(${song.image})"></div>
             <div class="detail">
                 <h3 class="name">${song.name}</h3>
@@ -137,7 +138,16 @@ const app = {
         currSongName.innerHTML = song.name;
         currSongThumbnail.style["background-image"] = `url(${song.image})`;
         audio.src = song.path;
-        this.renderSong();
+        // remove the previously active song (if any)
+        const activeSong = document.querySelector(".song.active");
+        if (activeSong)
+            activeSong.classList.remove("active");
+        // add the active class to the currently active song
+        const songs = Array.from(document.querySelectorAll(".song"));
+        const currSong = songs.find(function(song) {
+            return app.currSongIndex === Number(song.getAttribute("index"));
+        })
+        currSong.classList.add("active");
         this.scrollToActiveSong();
     },
     nextSong: function() {
@@ -340,7 +350,8 @@ const app = {
         playList.onclick = function(e) {
             // if clicked on option (3 dots)
             if (e.target.closest(".option")) {
-                console.log("option clicked");
+                downloadModalOverlay.classList.add("active");
+                downloadModalBtn.style.transform = "translateY(0)";
             } else {
                 // if click on a song (not including active song)
                 const songClicked = e.target.closest(".song:not(.active)")
@@ -377,6 +388,19 @@ const app = {
             darkModeIcon.src = src;
             app.changeConfig("enableDarkMode",app.enableDarkMode);
         }
+
+        // when user clicks on overlay
+        downloadModalOverlay.onclick = function() {
+            downloadModalOverlay.classList.remove("active");
+            downloadModalBtn.style.transform = "translateY(50px)";
+        }
+
+        // when user clicks on download button
+        downloadModalBtn.onclick = function() {
+            console.log("Music downloaded")
+            downloadModalOverlay.classList.remove("active");
+            downloadModalBtn.style.transform = "translateY(50px)";
+        }
     },
     start: function() {
         this.loadConfig();
@@ -396,6 +420,7 @@ app.start();
  * 4. save curr settings -- done
  * 5. progressBar color --done
  * 6. dark mode --done
- * 7. fix not have to render all songs again
+ * 7. fix not have to render all songs again --done
+ * 8. add download song --partly done
  */
  
