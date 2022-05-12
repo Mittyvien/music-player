@@ -364,6 +364,7 @@ body.dark-mode .song .option {
     z-index: 1;
     overflow: auto;
     max-width: 480px;
+    animation: fadeIn 0.3s ease;
 }
 
 .download-modal .overlay.active {
@@ -371,6 +372,10 @@ body.dark-mode .song .option {
 }
 
 #download-song-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -387,6 +392,11 @@ body.dark-mode .song .option {
 
 #download-song-btn:hover {
     background-color: #dedede;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 
