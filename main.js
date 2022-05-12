@@ -349,9 +349,14 @@ const app = {
         // when user clicks on playlist
         playList.onclick = function(e) {
             // if clicked on option (3 dots)
-            if (e.target.closest(".option")) {
+            const element = e.target.closest(".option");
+            if (element) {
                 downloadModalOverlay.classList.add("active");
                 downloadModalBtn.style.transform = "translateY(0)";
+                const selectedSong = element.closest(".song");
+                const selectedSongIndex = Number(selectedSong.getAttribute("index"));
+                downloadModalBtn.href = app.songs[selectedSongIndex].path;
+                // console.log(downloadModalBtn.href);
             } else {
                 // if click on a song (not including active song)
                 const songClicked = e.target.closest(".song:not(.active)")
@@ -421,6 +426,6 @@ app.start();
  * 5. progressBar color --done
  * 6. dark mode --done
  * 7. fix not have to render all songs again --done
- * 8. add download song --partly done
+ * 8. add download song -- done
  */
  
