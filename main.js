@@ -16,7 +16,6 @@ const startTime = document.getElementById("start-time");
 const endTime = document.getElementById("end-time");
 const volumeBtn = document.querySelector(".volume .volume-btn");
 const darkModeBtn = document.querySelector(".dark-mode-btn");
-const darkModeIcon = darkModeBtn.querySelector("img");
 const downloadModalOverlay = document.querySelector(".download-modal .overlay");
 const downloadModalBtn = document.getElementById("download-song-btn");
 
@@ -99,8 +98,6 @@ const app = {
     loadConfig: function() {
         if ("enableDarkMode" in this.config) {
             this.enableDarkMode = this.config.enableDarkMode;
-            if (app.enableDarkMode)
-                darkModeIcon.src = "./assets/img/dark-theme.png";
             document.body.classList.toggle("dark-mode",app.enableDarkMode);
         }
         if ("enableRandom" in this.config) {
@@ -386,11 +383,6 @@ const app = {
         darkModeBtn.onclick = function() {
             app.enableDarkMode = !app.enableDarkMode;
             document.body.classList.toggle("dark-mode",app.enableDarkMode);
-            var src = "./assets/img/";
-            if (app.enableDarkMode)
-                src += "dark-theme.png";
-            else src += "light-theme.png";
-            darkModeIcon.src = src;
             app.changeConfig("enableDarkMode",app.enableDarkMode);
         }
 
